@@ -1,0 +1,1 @@
+# Shopping-malls-discount-API
