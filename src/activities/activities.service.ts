@@ -16,4 +16,8 @@ export class ActivitiesService {
   async findAll(): Promise<Activity[] | null> {
     return await this.activityModel.find().exec();
   }
+
+  async delete(id: string) {
+    return await this.activityModel.findByIdAndDelete({ _id: id });
+  }
 }

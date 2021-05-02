@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { ActivitiesService } from './activities.service';
 import { Activity } from './activity.model';
 
@@ -14,5 +14,10 @@ export class ActivitiesController {
   @Post()
   async create(@Body() activitie: Activity): Promise<Activity> {
     return await this.activitiesService.create(activitie);
+  }
+
+  @Delete(':id')
+  async deleteOne(@Param('id') id: string) {
+    return await this.activitiesService.delete(id);
   }
 }
