@@ -13,6 +13,10 @@ export class MallsService {
     return await this.mallModel.create(createMallDto);
   }
 
+  async findOne(id: string) {
+    return await this.mallModel.findOne({ _id: id }).exec();
+  }
+
   async findAll(): Promise<Mall[] | null> {
     return await this.mallModel.find().exec();
   }
