@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param } from '@nestjs/common';
 import { StoresService } from './stores.service';
 import { Store } from './store.model';
 
@@ -11,8 +11,18 @@ export class StoresController {
     return await this.storeService.findAll();
   }
 
+  @Get(':id')
+  async getUser(@Param() user: { id: string }) {
+    return await this.storeService.findOne(user.id);
+  }
+
   @Post()
   async create(@Body() store: Store): Promise<Store> {
     return await this.storeService.create(store);
+  }
+
+  @Put(':id')
+  async update(@Param('id') id: string, @Body() user) {
+    return await this.storeService.update(id, user);
   }
 }

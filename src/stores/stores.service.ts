@@ -13,7 +13,15 @@ export class StoresService {
     return await this.storeModel.create(createStoreDto);
   }
 
+  async findOne(id: string) {
+    return await this.storeModel.findOne({ _id: id }).exec();
+  }
+
   async findAll(): Promise<Store[] | null> {
     return await this.storeModel.find().exec();
+  }
+
+  async update(id: string, updateUserDto) {
+    return await this.storeModel.findOneAndUpdate({ _id: id }, updateUserDto);
   }
 }

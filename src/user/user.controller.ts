@@ -7,11 +7,6 @@ import { User } from './user.model';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
-  // @Get()
-  // async getUser(): Promise<User[] | null> {
-  //   return await this.userService.findAll();
-  // }
-
   @Get(':id')
   async getUser(@Param() user: { id: string }) {
     return await this.userService.findOne(user.id);
